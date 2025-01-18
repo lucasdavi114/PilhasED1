@@ -35,3 +35,6 @@ void retiraCaracterEscape(char* v);
 
 // interface básica para interação
 void menu(Nodo_t *topo);
+
+// Função para imprimir a pilha completa.
+void imprimirPilha(Nodo_t *topo);

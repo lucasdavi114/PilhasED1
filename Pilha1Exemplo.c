@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "Pilha1Exemplo.h"
 
+int main() {
+    return pilhaExemplo();
+}
+
 // Lê os dados do teclado e insere na estrutura Pessoa.
 Pessoa lerPessoa() {
     Pessoa p;
@@ -36,12 +40,16 @@ void imprimePessoas(Pessoa p) {
     printf("\nNome:%s\nData de Nascimento: %d/%d/%d\n", p.nome, p.nascimento.dia, p.nascimento.mes, p.nascimento.ano);
 }
 
+void imprimirPilha(Nodo_t *topo) {
+
+}
+
 void menu(Nodo_t *topo) {
     int opcao;
     Nodo_t *remover;
 
     do{
-        printf("\n1 - Empilhar\n2 - Desempilhar\n0 - Sair\nOpcao: ");
+        printf("\n1 - Empilhar\n2 - Desempilhar\n3 - Imprimir pilha\n0 - Sair\nOpcao: ");
         scanf("%d", &opcao);
         
         switch (opcao)
@@ -101,6 +109,3 @@ Nodo_t* pop(Nodo_t** topo) {
     return NULL;
 }
 
-int main() {
-    return pilhaExemplo();
-}
