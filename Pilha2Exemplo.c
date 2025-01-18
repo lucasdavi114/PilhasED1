@@ -16,6 +16,10 @@ int pilhaExemplo() {
     }
     menu(pilha);
 
+    destruirPilha(pilha);
+    
+    printf("\nEncerrando Programa!!\n");
+
     return EXIT_SUCCESS;
 }
 
@@ -43,7 +47,6 @@ void menu(Pilha_t *p) {
             imprimirPilha(p);
             break;
         case SAIR:
-            printf("\nEncerrando Programa!!\n");
             break;
         default:
             printf("\nOpçao Invalida!!\n");
@@ -145,3 +148,8 @@ int pop(Pilha_t *p, Pessoa *elemento) {
     return 0;
 }
 
+void destruirPilha(Pilha_t *p) {
+    Pessoa temp;
+    while (pop(p, &temp)); // Remove todos os nós
+    free(p); // Libera a estrutura da pilha
+}

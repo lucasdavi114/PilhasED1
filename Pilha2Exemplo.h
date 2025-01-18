@@ -50,3 +50,5 @@ void menu(Pilha_t *p);
 
 // Função para imprimir a pilha completa.
 void imprimirPilha(Pilha_t *p);
+
+void destruirPilha(Pilha_t *p);
