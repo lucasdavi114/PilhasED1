@@ -6,42 +6,13 @@ int main() {
     return pilhaExemplo();
 }
 
-// Lê os dados do teclado e insere na estrutura Pessoa.
-Pessoa lerPessoa() {
-    Pessoa p;
+int pilhaExemplo() {
+    
+    Nodo_t *topo = NULL;
+    
+    menu(topo);
 
-    printf("\nDigite o nome: ");
-    setbuf(stdin, NULL);
-    fgets(p.nome, 50, stdin);
-    setbuf(stdin, NULL);
-    retiraCaracterEscape(p.nome);
-    printf("\nEntre com a data de nascimento do %s no formado d/m/ano: ", p.nome);
-    scanf("%d/%d/%d", &p.nascimento.dia, &p.nascimento.mes, &p.nascimento.ano);
-
-
-    return p;
-}
-
-void retiraCaracterEscape(char* v) {
-    int t;
-    for(int indice = 0; indice < 50; indice++) {
-        if (v[indice] == '\n') {
-            t = indice;
-            break;
-        }
-    }
-    if(v[t] == '\n') {
-        v[t] = '\0';
-    }
-}
-
-// Imprime os dados da Pessoa.
-void imprimePessoas(Pessoa p) {
-    printf("\nNome:%s\nData de Nascimento: %d/%d/%d\n", p.nome, p.nascimento.dia, p.nascimento.mes, p.nascimento.ano);
-}
-
-void imprimirPilha(Nodo_t *topo) {
-
+    return EXIT_SUCCESS;
 }
 
 void menu(Nodo_t *topo) {
@@ -65,6 +36,9 @@ void menu(Nodo_t *topo) {
                 printf("\nSem nó a remover!!\n");
             }
             break;
+        case IMPRIMIR:
+            imprimirPilha(topo);
+            break;
         case SAIR:
             printf("\nEncerrando Programa!!\n");
             break;
@@ -76,14 +50,52 @@ void menu(Nodo_t *topo) {
     }while(opcao != SAIR);
 }
 
-int pilhaExemplo() {
-    
-    Nodo_t *topo = NULL;
-    
-    menu(topo);
+// Lê os dados do teclado e insere na estrutura Pessoa.
+Pessoa lerPessoa() {
+    Pessoa p;
 
-    return EXIT_SUCCESS;
+    printf("\nDigite o nome: ");
+    setbuf(stdin, NULL);
+    fgets(p.nome, 50, stdin);
+    setbuf(stdin, NULL);
+    retiraCaracterEscape(p.nome);
+    printf("Entre com a data de nascimento do %s no formado d/m/ano: ", p.nome);
+    scanf("%d/%d/%d", &p.nascimento.dia, &p.nascimento.mes, &p.nascimento.ano);
+
+
+    return p;
 }
+
+void retiraCaracterEscape(char* v) {
+    int t;
+    for(int indice = 0; indice < 50; indice++) {
+        if (v[indice] == '\n') {
+            t = indice;
+            break;
+        }
+    }
+    if(v[t] == '\n') {
+        v[t] = '\0';
+    }
+}
+
+// Imprime os dados da Pessoa.
+void imprimePessoas(Pessoa p) {
+    printf("\nNome:%s\nData de Nascimento: %.2d/%.2d/%.2d\n", p.nome, p.nascimento.dia, p.nascimento.mes, p.nascimento.ano);
+}
+
+void imprimirPilha(Nodo_t *topo) {
+
+    printf("\n-Inicio Pilha\n");
+    while(topo) {
+        imprimePessoas(topo->p);
+        topo = topo->proximo;
+    }
+    printf("\n-Fim Pilha\n");
+
+}
+
+
 
 Nodo_t* push(Nodo_t *topo) {
     Nodo_t *novoNo = malloc(sizeof(Nodo_t));

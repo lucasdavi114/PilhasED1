@@ -3,6 +3,7 @@
 #define SAIR 0
 #define EMPILHAR 1
 #define DESEMPILHAR 2
+#define IMPRIMIR 3
 
 typedef struct {
     int dia, mes, ano;
@@ -23,12 +24,14 @@ int pilhaExemplo();
 // Lê os dados do teclado e insere na estrutura Pessoa.
 Pessoa lerPessoa();
 
+// Função para adicionar elemento na pilha.
 Nodo_t* push(Nodo_t *topo);
 
+// Função para remover elemento da pilha.
 Nodo_t* pop(Nodo_t** topo);
 
 // Imprime os dados da Pessoa.
-void imprimePessoa(Pessoa p);
+void imprimePessoas(Pessoa p);
 
 // Substitui o caracter de escape '\n' do char *v para um '\0', feito para remover o '\n' de entradas em strings literais da linguagem C.
 void retiraCaracterEscape(char* v);
