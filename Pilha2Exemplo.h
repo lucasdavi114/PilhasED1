@@ -16,9 +16,9 @@ typedef struct {
     Data nascimento;
 }Pessoa;
 
-typedef struct nodo {
+typedef struct Nodo {
     Pessoa p;
-    struct nodo *proximo;
+    struct Nodo *proximo;
 }Nodo_t;
 
 typedef struct {
