@@ -4,10 +4,9 @@
 
 int main() {
 
-    PilhaPtr p;
     fat_t resultado;
 
-    resultado = calculaFat(5);
+    resultado = calculaFat(3);
 
     printf("\nResultado: %d\n", resultado);
 
